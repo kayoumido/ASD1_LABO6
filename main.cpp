@@ -36,6 +36,27 @@ int main() {
         // result : same as 1st
     }
 
+    cout << endl << endl;
+
+    // 3rd code check
+    {
+        Int* p = (Int*) ::operator new(4 * sizeof(Int));
+
+        new(p)       Int();
+        new(p + 1)   Int(5);
+        new(p + 2)   Int(*(p + 1));
+        new(p + 3)   Int(move(*(p + 2)));
+
+              *(p) = *(p + 1);
+              *(p) = move(*(p + 3));
+
+        (p + 3)->~Int();
+        (p + 2)->~Int();
+        (p + 1)->~Int();
+            (p)->~Int();
+
+        ::operator delete(p);
+    }
 
     return 0;
 }
