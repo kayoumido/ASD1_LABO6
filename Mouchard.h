@@ -1,7 +1,3 @@
-//
-// Created by deekay on 17/04/19.
-//
-
 #ifndef LABO6_MOUCHARD_H
 #define LABO6_MOUCHARD_H
 
